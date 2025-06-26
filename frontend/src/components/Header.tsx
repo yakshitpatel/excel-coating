@@ -1,7 +1,11 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
+import { HugeiconsIcon } from '@hugeicons/react';
+import { ArrowDown01Icon } from '@hugeicons-pro/core-stroke-standard';
+import { ShoppingBasket03Icon, Call02Icon } from '@hugeicons-pro/core-solid-standard';
 import { Menu, X, ShoppingCart, Search } from 'lucide-react';
 import { useCart } from '@/contexts/CartContext';
 import CartDrawer from './CartDrawer';
@@ -12,47 +16,50 @@ export default function Header() {
   const { state } = useCart();
 
   const navigation = [
-    { name: 'Home', href: '/' },
+    { name: 'About', href: '/' },
     { name: 'Products', href: '/products' },
-    { name: 'About', href: '/about' },
-    { name: 'Blog', href: '/blog' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'Why Excel', href: '/why-excel' },
+    { name: 'Solutions', href: '/solutions' },
+    { name: 'Contact Us', href: '/contact-us' },
   ];
 
   return (
     <>
-      <header className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
+      <header className="bg-neutral-950 text-white px-5 md:px-10 lg:px-20 py-4">
+        <div className="max-w-[1440px] mx-auto">
+          <div className="flex justify-between items-center">
             {/* Logo */}
             <Link href="/" className="flex items-center">
-              <span className="text-2xl font-bold text-green-600">Excel Coatings</span>
+              <Image
+                src="/excel-coating-logo.svg"
+                alt="Excel Coatings Logo"
+                height={32}
+                width={120}
+                className="h-8 w-auto"
+                priority
+              />
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex space-x-8">
+            <nav className="hidden md:flex space-x-1">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-gray-700 hover:text-green-600 px-3 py-2 text-sm font-medium transition-colors"
+                  className="text-neutral-200 hover:text-white px-2 py-2 bg-neutral-950 hover:bg-neutral-800 rounded-md transition-colors"
                 >
-                  {item.name}
+                  <div className="text-sm px-2">{item.name}</div>
                 </Link>
               ))}
             </nav>
 
             {/* Search and Cart */}
-            <div className="flex items-center space-x-4">
-              <button className="p-2 text-gray-700 hover:text-green-600 transition-colors">
-                <Search className="h-5 w-5" />
-              </button>
-              
+            <div className="flex items-center space-x-2">
               <button
-                onClick={() => setIsCartOpen(true)}
-                className="relative p-2 text-gray-700 hover:text-green-600 transition-colors"
-              >
-                <ShoppingCart className="h-5 w-5" />
+              onClick={() => setIsCartOpen(true)}
+              className="flex items-center gap-2 px-3 py-2 text-white bg-neutral-950 rounded-lg border border-neutral-950 hover:border-white hover:bg-neutral-800 transition-colors cursor-pointer  ">
+                <HugeiconsIcon icon={ShoppingBasket03Icon} className="h-5 w-5" />
+                <span className="text-sm">Cart</span>
                 {state.itemCount > 0 && (
                   <span className="absolute -top-1 -right-1 bg-green-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
                     {state.itemCount}
@@ -60,6 +67,13 @@ export default function Header() {
                 )}
               </button>
 
+              <button
+              onClick={() => window.open('tel:+919826000000', '_blank')}
+              className="flex items-center gap-2 px-3 py-2 text-white bg-neutral-950 rounded-lg border border-white hover:bg-neutral-800 transition-colors cursor-pointer">
+                <HugeiconsIcon icon={Call02Icon} className="h-5 w-5" />
+                <span className="text-sm">Talk to Expert</span>
+              </button>
+              
               {/* Mobile menu button */}
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}

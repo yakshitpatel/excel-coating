@@ -9,18 +9,22 @@ export default async function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-green-600 to-green-800 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                Advanced Eco-Friendly
-                <span className="block text-green-200">Nano Coatings</span>
-              </h1>
-              <p className="text-xl mb-8 text-green-100">
-                Revolutionary nano-based coatings that protect while preserving our planet. 
-                Sustainable solutions for tomorrow's industrial challenges.
-              </p>
+      <section className="relative bg-gradient-to-b from-neutral-950 to-neutral-800 text-white px-5 md:px-10 lg:px-20 py-10 md:py-20">
+        <div className="max-w-[1440px] mx-auto">
+          <div className="grid lg:grid-cols-2 gap-6 md:gap-10 lg:gap-20 items-center">
+            <div className="flex flex-col gap-6 md:gap-10 py-2 md:py-10 lg:py-20">
+              <div className="flex flex-col gap-6">
+                <div className="flex flex-col gap-2 bg-neutral-800 p-3 rounded-lg w-fit">
+                  Built for Indian Climate. Powered by Nano-Tech
+                </div>
+                <h1 className="text-5xl md:text-7xl font-medium leading-tight">
+                  India’s Best Nano Coatings for Reflecting Heat
+                </h1>
+                <p className="text-xl text-neutral-400 font-regular">
+                  Excel Coatings are Ideal for homes, factories, and green buildings to reflect heat, seal surfaces,
+                  and reduce maintenance with long-lasting protection.
+                </p>
+              </div>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   href="/products"
@@ -110,7 +114,7 @@ export default async function Home() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {featuredProducts.map((product) => (
               <div key={product.id} className="text-center">
-                <Image
+          <Image
                   src={product.image}
                   alt={product.name}
                   width={200}
